@@ -1,14 +1,14 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Awesome Books
+# Awesome Books ES6
 
 ![book-logo](https://user-images.githubusercontent.com/84629565/182137025-2407fe77-369d-42c2-a737-6c1728426eec.jpg)
 
-> This educational project for Microverse Module 2 involves creating a straightforward website that shows a list of books and lets you add and remove books from that list. The intention is to use modules and learn ES6 syntax to make it more orderly. built with JavaScript, CSS and HTML.
+> This educational project for Microverse Module 2 involves creating a straightforward website that shows a list of books and lets you add and remove books from that list. The intention is to use modules and learn ES6 syntax to make it more orderly. built with JavaScript, TailwindCSS and HTML.
 
 
 ## Built With
-- HTML, TailwindCSS, JavaScript
+- HTML, TailwindCSS, JavaScript, used [Luxon](https://moment.github.io/luxon/#/?id=luxon) for Date display
 - Linters:
   - Stylelint
   - Lighthouse
@@ -24,13 +24,6 @@
 [Awesome-Books](https://michael-duke.github.io/Awesome-Books/) :point_left: Here :smile:
 
 ## Authors
-
-👤 **Makoji David**
-
-- GitHub: [@aceDavon](https://github.com/acedavon)
-- Twitter: [@sharkleshevon](https://twitter.com/sharkleshevon)
-- LinkedIn: [Makoji David](https://www.linkedin.com/in/david-makoji-b6090971/)
-
 
 👤 **Michael Mesfin**
 
