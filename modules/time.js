@@ -1,17 +1,15 @@
-class Time {
+import { DateTime } from './luxon.min.js';
+
+class Time extends DateTime {
   static displayTime() {
-    const time = new Date();
-    const locale = navigator.language;
-    const options = {
-      month: 'long',
-      day: 'numeric',
-      year: 'numeric',
-      hour: 'numeric',
-      minute: 'numeric',
-      second: 'numeric',
-      hour12: 'false',
+    const dateTime = DateTime.now();
+    const customeDateFormat = {
+      ...DateTime.DATE_FULL,
+      ...DateTime.TIME_WITH_SECONDS,
     };
-    document.querySelector('.date-time p').textContent = `${time.toLocaleTimeString(locale, options)}`;
+    document.querySelector(
+      '.date-time p',
+    ).textContent = `${dateTime.toLocaleString(customeDateFormat)}`;
   }
 }
 
