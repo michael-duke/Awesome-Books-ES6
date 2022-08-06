@@ -1,9 +1,7 @@
 import CreateBook from './create-book.js';
-import { DynamicBook, status } from './dynamic-book.js';
-import Time from './time.js';
-import { singlePageNav, toggleActiveLink } from './spa-navigation.js';
+import { DynamicBook } from './dynamic-book.js';
 
-class BooksCollection {
+export default class BooksCollection {
   constructor() {
     this.library = JSON.parse(localStorage.getItem('books')) || [];
   }
@@ -53,16 +51,3 @@ class BooksCollection {
     localStorage.setItem('books', JSON.stringify(this.library));
   }
 }
-
-/* Initialization */
-const bookCollection = new BooksCollection();
-bookCollection.isCollectionEmpty();
-const { messageOn } = status;
-
-if (!messageOn) DynamicBook.renderBooks(bookCollection.library, bookCollection);
-const addBtn = document.querySelector('.add-btn');
-addBtn.onclick = () => bookCollection.getInput();
-
-setInterval(Time.displayTime, 10);
-singlePageNav();
-toggleActiveLink();
