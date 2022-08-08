@@ -1,8 +1,9 @@
 import CreateBook from './create-book.js';
-import { DynamicBook } from './dynamic-book.js';
-import { validStatus, BookValidation } from './book-validation.js';
+import DynamicBook from './dynamic-book.js';
+import BookValidation from './book-validation.js';
 
-export default class BooksCollection {
+const dynamicBook = new DynamicBook();
+class BooksCollection {
   constructor() {
     this.library = JSON.parse(localStorage.getItem('books')) || [];
   }
@@ -11,7 +12,7 @@ export default class BooksCollection {
   addBook(book) {
     this.library.push(book);
     this.saveCollection();
-    DynamicBook.renderBooks(this.library, this);
+    dynamicBook.renderBooks(this.library, this);
   }
 
   removeBook(bookId) {
@@ -21,7 +22,7 @@ export default class BooksCollection {
 
   onDelete(bookToDelete) {
     this.removeBook(bookToDelete);
-    DynamicBook.renderBooks(this.library, this);
+    dynamicBook.renderBooks(this.library, this);
     this.isCollectionEmpty();
   }
 
@@ -34,24 +35,25 @@ export default class BooksCollection {
     const bookAuthor = document.getElementById('author');
     const { value: author } = bookAuthor;
 
-    BookValidation.validateBook(title, author);
-    if (validStatus.isValid) {
+    const bookValidation = new BookValidation();
+    bookValidation.validateBook(title, author);
+    const { isValid } = bookValidation;
+    if (isValid) {
       const newBook = new CreateBook(id, title, author);
       this.addBook(newBook);
-      DynamicBook.renderBooks(this.library, this);
-      validStatus.isValid = false;
+      dynamicBook.renderBooks(this.library, this);
       bookTitle.value = '';
       bookAuthor.value = '';
     }
   }
 
   isCollectionEmpty() {
-    if (this.library.length === 0) {
-      DynamicBook.renderEmptyMessage();
-    }
+    if (this.library.length === 0) dynamicBook.renderEmptyMessage();
   }
 
   saveCollection() {
     localStorage.setItem('books', JSON.stringify(this.library));
   }
 }
+
+export { BooksCollection, dynamicBook };
